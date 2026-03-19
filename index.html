@@ -1,0 +1,881 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Canciones Prohibidas - Dictadura Argentina 1976-1983</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-primary: #fafafa;
+        --bg-secondary: #ffffff;
+        --text-primary: #1a1a1a;
+        --text-secondary: #555555;
+        --text-light: #888888;
+        --accent: #003366;
+        --accent-light: #004d99;
+        --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.8;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Hero Banner - Pantalla completa */
+      .hero-banner {
+        width: 100%;
+        height: 100vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+          url("canciones-prohibidas.jpg") center/cover no-repeat;
+        background-color: #1a1a1a;
+        display: flex;
+        align-items: flex-end;
+        padding-bottom: 5rem;
+        animation: fadeIn 1.5s ease-out;
+        position: relative;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .hero-scroll-indicator {
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-size: 0.85rem;
+        opacity: 0.7;
+        animation: bounce 2s infinite;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      @keyframes bounce {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+        40% {
+          transform: translateY(-10px);
+        }
+        60% {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* Navigation dots */
+      .nav-dots {
+        position: fixed;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .nav-dot:hover,
+      .nav-dot.active {
+        background: white;
+        transform: scale(1.3);
+      }
+
+      @media (max-width: 768px) {
+        .nav-dots {
+          display: none;
+        }
+      }
+
+      /* Sections */
+      main {
+        width: 100%;
+        flex: 1;
+      }
+
+      section {
+        width: 100%;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: var(--transition);
+      }
+
+      section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Intro Section */
+      .intro-section {
+        background: var(--bg-secondary);
+        padding: 6rem 0;
+      }
+
+      .intro-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .intro-section h2 {
+        font-weight: 700;
+        margin-bottom: 2rem;
+        color: var(--text-primary);
+        font-size: 2.5rem;
+        letter-spacing: -1px;
+        line-height: 1.2;
+      }
+
+      .intro-section p {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        font-size: 1.15rem;
+        line-height: 1.9;
+      }
+
+      .intro-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Category Sections */
+      .category-section {
+        width: 100%;
+        position: relative;
+        background: var(--bg-secondary);
+      }
+
+      /* Imagen estilo hero */
+      .category-image-wrapper {
+        width: 100%;
+        height: 85vh;
+        min-height: 500px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .category-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scale(1.1);
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .category-section:hover .category-image {
+        transform: scale(1);
+      }
+
+      .category-header {
+        text-align: center;
+        padding: 3rem 2rem 4rem;
+        background: var(--bg-secondary);
+      }
+
+      .category-header h3 {
+        font-weight: 700;
+        font-size: 2.8rem;
+        color: var(--accent);
+        letter-spacing: -1px;
+        margin: 0;
+      }
+
+      .category-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 6rem;
+      }
+
+      /* Cards de canciones */
+      .songs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .cancion-card {
+        background: var(--bg-secondary);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        transition: var(--transition);
+        border: 1px solid #f0f0f0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .cancion-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+        border-color: var(--accent);
+      }
+
+      .cancion-card h5 {
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.5px;
+        line-height: 1.3;
+      }
+
+      .cancion-card .artista {
+        color: var(--accent);
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .cancion-card p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 0;
+        line-height: 1.7;
+        flex-grow: 1;
+      }
+
+      /* Footer estilo UADER */
+      footer {
+        background-color: #1a1a1a !important;
+      }
+
+      footer a {
+        transition: opacity 0.3s;
+      }
+
+      footer a:hover {
+        opacity: 0.8;
+      }
+
+      footer .social-divider {
+        color: rgba(255, 255, 255, 0.4);
+        margin: 0 0.25rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .category-image-wrapper {
+          height: 70vh;
+          min-height: 400px;
+        }
+
+        .category-header h3 {
+          font-size: 2.3rem;
+        }
+
+        .intro-section h2 {
+          font-size: 2rem;
+        }
+
+        .songs-grid {
+          grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+          gap: 1.5rem;
+        }
+
+        .category-content {
+          padding: 0 2rem 5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-banner {
+          height: 70vh;
+          padding-bottom: 3rem;
+        }
+
+        .intro-content,
+        .category-content {
+          padding: 0 1.5rem;
+        }
+
+        .intro-section h2 {
+          font-size: 1.8rem;
+        }
+
+        .intro-section p {
+          font-size: 1.05rem;
+        }
+
+        .category-image-wrapper {
+          height: 60vh;
+          min-height: 350px;
+        }
+
+        .category-header h3 {
+          font-size: 2rem;
+        }
+
+        .category-header {
+          padding: 2rem 1.5rem 3rem;
+        }
+
+        .songs-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .cancion-card {
+          padding: 1.75rem;
+        }
+
+        .category-content {
+          padding: 0 1.5rem 4rem;
+        }
+
+        .category-section:last-child .category-content {
+          padding-bottom: 5rem;
+        }
+
+        /* Footer responsive */
+        footer .social-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .intro-section {
+          padding: 4rem 0;
+        }
+
+        .intro-content,
+        .category-content {
+          padding: 0 1.25rem;
+        }
+
+        .category-header {
+          padding: 1.5rem 1.25rem 2.5rem;
+        }
+
+        .category-content {
+          padding: 0 1.25rem 4rem;
+        }
+
+        .category-section:last-child .category-content {
+          padding-bottom: 5rem;
+        }
+
+        .category-image-wrapper {
+          height: 50vh;
+          min-height: 300px;
+        }
+
+        .cancion-card {
+          padding: 1.5rem;
+        }
+
+        .cancion-card h5 {
+          font-size: 1.15rem;
+        }
+
+        .cancion-card p {
+          font-size: 0.9rem;
+        }
+
+        .songs-grid {
+          gap: 1.25rem;
+        }
+      }
+
+      /* Scroll progress indicator */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-light));
+        z-index: 9999;
+        width: 0%;
+        transition: width 0.1s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+      <div class="nav-dot active" data-target="intro" title="Inicio"></div>
+      <div
+        class="nav-dot"
+        data-target="rock-nacional"
+        title="Rock Nacional"
+      ></div>
+      <div class="nav-dot" data-target="folklore" title="Folklore"></div>
+      <div
+        class="nav-dot"
+        data-target="rock-internacional"
+        title="Rock Internacional"
+      ></div>
+      <div
+        class="nav-dot"
+        data-target="infantiles"
+        title="Canciones Infantiles"
+      ></div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+      <div class="hero-scroll-indicator">
+        <span>↓ Deslizar para explorar</span>
+      </div>
+    </section>
+
+    <main>
+      <!-- Introducción -->
+      <section class="intro-section visible" id="intro">
+        <div class="intro-content">
+          <h2>La Censura Musical durante la Dictadura</h2>
+          <p>
+            Durante la última dictadura en Argentina, el control sobre la
+            cultura fue una herramienta clave del régimen. A través de
+            organismos como el COMFER, se prohibieron canciones que pudieran
+            "alterar el orden", cuestionar la autoridad o transmitir ideas
+            consideradas peligrosas.
+          </p>
+          <p>
+            La música, sin embargo, se convirtió en un espacio de resistencia
+            simbólica. Muchas canciones fueron censuradas no solo por su
+            contenido explícito, sino también por interpretaciones metafóricas o
+            por la postura política de sus artistas.
+          </p>
+          <p>
+            La censura musical durante la dictadura no solo buscó eliminar
+            contenidos "peligrosos", sino también controlar la forma en que las
+            personas pensaban, sentían y se expresaban. Muchas canciones fueron
+            prohibidas no por lo que decían explícitamente, sino por lo que
+            podían hacer pensar.
+          </p>
+          <p>
+            Con el tiempo, estas obras se transformaron en símbolos de
+            resistencia y memoria. Hoy forman parte del patrimonio cultural
+            argentino y permiten reflexionar sobre la importancia de la libertad
+            de expresión y la necesidad de defenderla.
+          </p>
+        </div>
+      </section>
+
+      <!-- Rock Nacional -->
+      <section class="category-section" id="rock-nacional">
+        <div class="category-image-wrapper">
+          <img
+            src="rock-nacional.jpg"
+            alt="Rock Nacional"
+            class="category-image"
+          />
+        </div>
+        <div class="category-header">
+          <h3>Rock Nacional</h3>
+        </div>
+        <div class="category-content">
+          <div class="songs-grid">
+            <div class="cancion-card">
+              <h5>"Viernes 3 AM"</h5>
+              <span class="artista">Charly García</span>
+              <p>
+                La canción aborda el suicidio de manera directa y con un tono
+                existencial oscuro. En el contexto de la dictadura, este tipo de
+                contenido era considerado "desmoralizante", ya que el régimen
+                buscaba proyectar una imagen de orden y estabilidad. Se temía
+                que promoviera pensamientos negativos o cuestionamientos
+                individuales.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Me gusta ese tajo"</h5>
+              <span class="artista">Pescado Rabioso</span>
+              <p>
+                Fue censurada por su lenguaje explícito y referencias sexuales.
+                La dictadura también ejercía control moral sobre los contenidos
+                culturales, prohibiendo aquello que consideraba "inmoral" o
+                contrario a los valores tradicionales.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"La cultura es la sonrisa"</h5>
+              <span class="artista">León Gieco</span>
+              <p>
+                Aunque no es abiertamente política, su mensaje sobre la cultura
+                como forma de expresión libre fue interpretado como una defensa
+                de la libertad frente a la censura. Esto la volvió sospechosa
+                para el régimen.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Ayer nomás"</h5>
+              <span class="artista">Los Gatos / Moris</span>
+              <p>
+                La letra expresa desencanto social y una mirada crítica sobre la
+                realidad. En un contexto de represión, cualquier alusión a la
+                pérdida de libertades o al malestar social era considerada
+                subversiva.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Canción de amor para Francisca"</h5>
+              <span class="artista">León Gieco</span>
+              <p>
+                Interpretada como una metáfora sobre la pérdida, la ausencia y
+                el dolor, temas que podían vincularse con las desapariciones
+                forzadas. La ambigüedad poética generaba sospecha en los
+                censores.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Tema de los mosquitos"</h5>
+              <span class="artista">León Gieco</span>
+              <p>
+                Utiliza metáforas que podían leerse como críticas al poder o a
+                la violencia. La dictadura solía censurar canciones con lenguaje
+                simbólico por temor a mensajes ocultos.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Folklore -->
+      <section class="category-section" id="folklore">
+        <div class="category-image-wrapper">
+          <img src="folklore.jpg" alt="Folklore" class="category-image" />
+        </div>
+        <div class="category-header">
+          <h3>Folklore</h3>
+        </div>
+        <div class="category-content">
+          <div class="songs-grid">
+            <div class="cancion-card">
+              <h5>"Como la cigarra"</h5>
+              <span class="artista">Mercedes Sosa (de María Elena Walsh)</span>
+              <p>
+                Su letra habla de renacer después de la muerte ("tantas veces me
+                mataron..."), lo que la convirtió en un símbolo de resistencia.
+                Además, Mercedes Sosa fue perseguida y exiliada, lo que reforzó
+                la censura sobre su repertorio.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"La guerrillera" / "Estamos prisioneros" / "Carceleros"</h5>
+              <span class="artista">Horacio Guarany</span>
+              <p>
+                Estas canciones contienen referencias directas a la represión,
+                la cárcel y la lucha política. Por su contenido explícito,
+                fueron consideradas peligrosas y directamente subversivas.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Cambalache"</h5>
+              <span class="artista">Enrique Santos Discépolo</span>
+              <p>
+                Aunque es anterior a la dictadura, su fuerte crítica a la
+                corrupción y a la decadencia moral ("todo es igual, nada es
+                mejor") fue vista como incompatible con el discurso oficial que
+                intentaba legitimar el régimen.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Rock Internacional -->
+      <section class="category-section" id="rock-internacional">
+        <div class="category-image-wrapper">
+          <img
+            src="rock-internacional.jpg"
+            alt="Rock Internacional"
+            class="category-image"
+          />
+        </div>
+        <div class="category-header">
+          <h3>Rock Internacional</h3>
+        </div>
+        <div class="category-content">
+          <div class="songs-grid">
+            <div class="cancion-card">
+              <h5>"Cocaine"</h5>
+              <span class="artista">Eric Clapton</span>
+              <p>
+                Fue censurada por considerarse una apología del consumo de
+                drogas, algo que el régimen buscaba erradicar por razones
+                morales y de control social.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Another Brick in the Wall (Part 1)"</h5>
+              <span class="artista">Pink Floyd</span>
+              <p>
+                Su crítica a las instituciones educativas y a la autoridad en
+                general se interpretó como un mensaje anti-sistema, lo cual
+                resultaba inaceptable para un gobierno autoritario.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Da Ya Think I'm Sexy?"</h5>
+              <span class="artista">Rod Stewart</span>
+              <p>
+                Censurada por su contenido sexual explícito. La dictadura
+                también imponía normas estrictas sobre la moral pública.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Tie Your Mother Down"</h5>
+              <span class="artista">Queen</span>
+              <p>
+                Su lenguaje y actitud desafiante hacia figuras de autoridad
+                fueron considerados inapropiados.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Canciones Infantiles -->
+      <section class="category-section" id="infantiles">
+        <div class="category-image-wrapper">
+          <img
+            src="canciones-infantiles.jpg"
+            alt="Canciones Infantiles"
+            class="category-image"
+          />
+        </div>
+        <div class="category-header">
+          <h3>Canciones Infantiles</h3>
+        </div>
+        <div class="category-content">
+          <div class="songs-grid">
+            <div class="cancion-card">
+              <h5>"Gilito de Barrio Norte"</h5>
+              <span class="artista">María Elena Walsh</span>
+              <p>
+                Aunque parece humorística, contiene una crítica social sutil.
+                María Elena Walsh fue una figura crítica del régimen, lo que
+                generó vigilancia sobre su obra.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"Doña Fiaca"</h5>
+              <span class="artista">Eladia Blázquez</span>
+              <p>
+                La historia de una mujer que se niega a cumplir con las
+                exigencias sociales fue interpretada como un cuestionamiento al
+                orden establecido.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <h5>"El twist del mono liso"</h5>
+              <span class="artista">María Elena Walsh</span>
+              <p>
+                Aunque es una canción infantil, formaba parte del repertorio de
+                una autora considerada incómoda para el poder, lo que derivó en
+                censura indirecta.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer estilo UADER -->
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container text-center">
+        <p class="mb-1">
+          <a
+            href="https://fcytcdelu.uader.edu.ar"
+            target="_blank"
+            class="text-white text-decoration-none mx-2"
+            >UADER FCyT - Sede Concepción del Uruguay</a
+          >
+        </p>
+        <p class="mb-0">
+          <a
+            href="https://www.instagram.com/fcyt_uader_cdelu/"
+            target="_blank"
+            class="text-white text-decoration-none mx-2"
+          >
+            <i class="bi bi-instagram"></i> Instagram
+          </a>
+          <span class="social-divider">|</span>
+          <a
+            href="https://www.facebook.com/uaderfcytcdelu/"
+            target="_blank"
+            class="text-white text-decoration-none mx-2"
+          >
+            <i class="bi bi-facebook"></i> Facebook
+          </a>
+          <span class="social-divider">|</span>
+          <a
+            href="https://www.linkedin.com/in/fcyt-uader-sede-concepci%C3%B3n-del-uruguay-956909223"
+            target="_blank"
+            class="text-white text-decoration-none mx-2"
+          >
+            <i class="bi bi-linkedin"></i> LinkedIn
+          </a>
+          <span class="social-divider">|</span>
+          <a
+            href="https://www.youtube.com/channel/UCb4RLTZlFFZOWdcR7ZpokFQ"
+            target="_blank"
+            class="text-white text-decoration-none mx-2"
+          >
+            <i class="bi bi-youtube"></i> Youtube
+          </a>
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Scroll Progress Bar
+      window.addEventListener("scroll", function () {
+        const windowHeight = window.innerHeight;
+        const documentHeight =
+          document.documentElement.scrollHeight - windowHeight;
+        const scrolled = window.scrollY;
+        const progress = (scrolled / documentHeight) * 100;
+        document.getElementById("scrollProgress").style.width = progress + "%";
+      });
+
+      // Navigation Dots
+      const navDots = document.querySelectorAll(".nav-dot");
+      const sections = document.querySelectorAll("section");
+
+      navDots.forEach((dot) => {
+        dot.addEventListener("click", function () {
+          const targetId = this.getAttribute("data-target");
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Update active dot on scroll
+      window.addEventListener("scroll", function () {
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+
+        sections.forEach((section, index) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          if (
+            scrollPosition >= sectionTop &&
+            scrollPosition < sectionTop + sectionHeight
+          ) {
+            navDots.forEach((dot) => dot.classList.remove("active"));
+            if (navDots[index]) {
+              navDots[index].classList.add("active");
+            }
+          }
+        });
+      });
+
+      // Fade-in on scroll
+      function checkVisibility() {
+        const elements = document.querySelectorAll("section");
+
+        elements.forEach((el) => {
+          const rect = el.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+
+          if (rect.top < windowHeight * 0.8) {
+            el.classList.add("visible");
+          }
+        });
+      }
+
+      window.addEventListener("load", checkVisibility);
+      window.addEventListener("scroll", checkVisibility);
+
+      // Stagger animation for cards
+      document.addEventListener("DOMContentLoaded", function () {
+        const categorySections = document.querySelectorAll(".category-section");
+        categorySections.forEach((section, index) => {
+          section.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Stagger animation for cards within each section
+        const songsGrids = document.querySelectorAll(".songs-grid");
+        songsGrids.forEach((grid) => {
+          const cards = grid.querySelectorAll(".cancion-card");
+          cards.forEach((card, index) => {
+            card.style.opacity = "0";
+            card.style.transform = "translateY(20px)";
+            card.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+          });
+        });
+
+        // Animate cards when section becomes visible
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const cards = entry.target.querySelectorAll(".cancion-card");
+                cards.forEach((card) => {
+                  card.style.opacity = "1";
+                  card.style.transform = "translateY(0)";
+                });
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
+
+        document.querySelectorAll(".category-section").forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
+  </body>
+</html>
