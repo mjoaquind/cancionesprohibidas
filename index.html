@@ -47,7 +47,7 @@
         min-height: 100vh;
       }
 
-      /* Hero Banner */
+      /* Hero Banner - CORREGIDO PARA MÓVIL */
       .hero-banner {
         width: 100%;
         height: 100vh;
@@ -187,7 +187,6 @@
         background: var(--bg-secondary);
       }
 
-      /* Imagen de categoría - CORREGIDO PARA MÓVIL */
       .category-image-wrapper {
         width: 100%;
         height: 85vh;
@@ -353,8 +352,9 @@
       }
 
       @media (max-width: 768px) {
+        /* CORRECCIÓN: Hero más bajo en tablet/móvil */
         .hero-banner {
-          height: 60vh;
+          height: 50vh;
           padding-bottom: 3rem;
         }
 
@@ -371,7 +371,6 @@
           font-size: 1.05rem;
         }
 
-        /* CORRECCIÓN: Imágenes más bajas para ver más ancho en tablet/móvil */
         .category-image-wrapper {
           height: 35vh;
           min-height: 250px;
@@ -410,6 +409,11 @@
       }
 
       @media (max-width: 576px) {
+        /* CORRECCIÓN: Hero aún más bajo en móvil pequeño */
+        .hero-banner {
+          height: 40vh;
+        }
+
         .intro-section {
           padding: 4rem 0;
         }
@@ -431,7 +435,6 @@
           padding-bottom: 5rem;
         }
 
-        /* CORRECCIÓN: Imágenes aún más bajas en móvil pequeño */
         .category-image-wrapper {
           height: 30vh;
           min-height: 200px;
@@ -451,7 +454,11 @@
       }
 
       @media (max-width: 375px) {
-        /* CORRECCIÓN: Para móviles muy pequeños */
+        /* CORRECCIÓN: Hero para móviles muy pequeños */
+        .hero-banner {
+          height: 35vh;
+        }
+
         .category-image-wrapper {
           height: 28vh;
           min-height: 180px;
