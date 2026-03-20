@@ -18,7 +18,6 @@
         --bg-secondary: #ffffff;
         --text-primary: #1a1a1a;
         --text-secondary: #555555;
-        --text-light: #888888;
         --accent: #003366;
         --accent-light: #004d99;
         --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -48,7 +47,7 @@
         min-height: 100vh;
       }
 
-      /* Hero Banner - Pantalla completa */
+      /* Hero Banner */
       .hero-banner {
         width: 100%;
         height: 100vh;
@@ -60,7 +59,6 @@
         align-items: flex-end;
         padding-bottom: 5rem;
         animation: fadeIn 1.5s ease-out;
-        position: relative;
       }
 
       @keyframes fadeIn {
@@ -186,11 +184,10 @@
       /* Category Sections */
       .category-section {
         width: 100%;
-        position: relative;
         background: var(--bg-secondary);
       }
 
-      /* Imagen estilo hero */
+      /* Imagen de categoría - CORREGIDO PARA MÓVIL */
       .category-image-wrapper {
         width: 100%;
         height: 85vh;
@@ -219,7 +216,6 @@
       .category-header {
         text-align: center;
         padding: 3rem 2rem 4rem;
-        background: var(--bg-secondary);
       }
 
       .category-header h3 {
@@ -236,7 +232,7 @@
         padding: 0 2rem 6rem;
       }
 
-      /* Cards de canciones */
+      /* Cards */
       .songs-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -266,7 +262,6 @@
         align-items: center;
         gap: 0.5rem;
         margin-bottom: 0.5rem;
-        flex-wrap: wrap;
       }
 
       .cancion-title-link {
@@ -314,7 +309,7 @@
         flex-grow: 1;
       }
 
-      /* Footer estilo UADER */
+      /* Footer */
       footer {
         background-color: #1a1a1a !important;
       }
@@ -332,7 +327,7 @@
         margin: 0 0.25rem;
       }
 
-      /* Responsive */
+      /* Responsive - CORREGIDO PARA MÓVIL */
       @media (max-width: 992px) {
         .category-image-wrapper {
           height: 60vh;
@@ -376,9 +371,10 @@
           font-size: 1.05rem;
         }
 
+        /* CORRECCIÓN: Imágenes más bajas para ver más ancho en tablet/móvil */
         .category-image-wrapper {
-          height: 45vh;
-          min-height: 300px;
+          height: 35vh;
+          min-height: 250px;
         }
 
         .category-header h3 {
@@ -435,40 +431,34 @@
           padding-bottom: 5rem;
         }
 
+        /* CORRECCIÓN: Imágenes aún más bajas en móvil pequeño */
         .category-image-wrapper {
-          height: 40vh;
-          min-height: 250px;
+          height: 30vh;
+          min-height: 200px;
         }
 
         .cancion-card {
           padding: 1.5rem;
         }
 
-        .cancion-card h5 {
-          font-size: 1.15rem;
-        }
-
-        .cancion-card p {
-          font-size: 0.9rem;
+        .cancion-title-link {
+          font-size: 1.1rem;
         }
 
         .songs-grid {
           gap: 1.25rem;
         }
-
-        .cancion-title-link {
-          font-size: 1.1rem;
-        }
       }
 
       @media (max-width: 375px) {
+        /* CORRECCIÓN: Para móviles muy pequeños */
         .category-image-wrapper {
-          height: 35vh;
-          min-height: 220px;
+          height: 28vh;
+          min-height: 180px;
         }
       }
 
-      /* Scroll progress indicator */
+      /* Scroll progress */
       .scroll-progress {
         position: fixed;
         top: 0;
@@ -564,7 +554,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/41tcjjAImkOeFHEaGghqqI?si=43ba13dff6e44a6b"
+                  href="https://open.spotify.com/search/Viernes%203%20AM%20Charly%20García"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -572,7 +562,7 @@
                   <span>"Viernes 3 AM"</span>
                 </a>
               </div>
-              <span class="artista">Seru Giran | Charly García</span>
+              <span class="artista">Charly García</span>
               <p>
                 La canción aborda el suicidio de manera directa y con un tono
                 existencial oscuro. En el contexto de la dictadura, este tipo de
@@ -585,7 +575,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/5eK0UAeymUyyXILUAefcj5?si=e5c47b86470548e7"
+                  href="https://open.spotify.com/search/Me%20gusta%20ese%20tajo%20Pescado%20Rabioso"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -604,7 +594,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/0igatxQn7IXSsXoLUZj6Wj?si=9bea888b77244130"
+                  href="https://open.spotify.com/search/La%20cultura%20es%20la%20sonrisa%20León%20Gieco"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -623,7 +613,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/20ILhYY5QbmsNc8KKBf8w5?si=d1169a1afec54079"
+                  href="https://open.spotify.com/search/Ayer%20nomás%20Los%20Gatos"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -631,7 +621,7 @@
                   <span>"Ayer nomás"</span>
                 </a>
               </div>
-              <span class="artista">Los Gatos | Moris</span>
+              <span class="artista">Los Gatos / Moris</span>
               <p>
                 La letra expresa desencanto social y una mirada crítica sobre la
                 realidad. En un contexto de represión, cualquier alusión a la
@@ -642,7 +632,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/7ynsa67gEii9YQIV8tpax0?si=ec87f29ad4724a74"
+                  href="https://open.spotify.com/search/Canción%20de%20amor%20para%20Francisca%20León%20Gieco"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -661,7 +651,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/2Z91bDhwHETObUwgqrILwV?si=70da33d4f3df4086"
+                  href="https://open.spotify.com/search/Tema%20de%20los%20mosquitos%20León%20Gieco"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -693,7 +683,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/3d9cyv4UtVqbWnVa9fqwiO?si=2fc2ed8228074c4e"
+                  href="https://open.spotify.com/search/Como%20la%20cigarra%20Mercedes%20Sosa"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -712,23 +702,41 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/34a27fH0pzIAko2aRGSdz2?si=c8d7665a2ffc40ad"
+                  href="https://open.spotify.com/search/La%20guerrillera%20Horacio%20Guarany"
                   target="_blank"
                   class="cancion-title-link"
                 >
                   <i class="bi bi-spotify"></i>
                   <span>"La guerrillera"</span>
                 </a>
-                |
+              </div>
+              <span class="artista">Horacio Guarany</span>
+              <p>
+                Esta canción contiene referencias directas a la represión, la
+                cárcel y la lucha política. Por su contenido explícito, fue
+                considerada peligrosa y directamente subversiva.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/7oMm6nAJ5sVE7sb19S2Zph?si=f530765b684b4ed6"
+                  href="https://open.spotify.com/search/Estamos%20prisioneros%20Horacio%20Guarany"
                   target="_blank"
                   class="cancion-title-link"
                 >
                   <i class="bi bi-spotify"></i>
                   <span>"Estamos prisioneros"</span>
                 </a>
-                |
+              </div>
+              <span class="artista">Horacio Guarany</span>
+              <p>
+                Esta canción contiene referencias directas a la represión, la
+                cárcel y la lucha política. Por su contenido explícito, fue
+                considerada peligrosa y directamente subversiva.
+              </p>
+            </div>
+            <div class="cancion-card">
+              <div class="cancion-card-header">
                 <a
                   href="https://open.spotify.com/search/Carceleros%20Horacio%20Guarany"
                   target="_blank"
@@ -748,7 +756,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/3PI0FE7JUmEmEyN5YgKPZA?si=b89b5e3f54be483c"
+                  href="https://open.spotify.com/search/Cambalache%20Enrique%20Santos%20Discépolo"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -785,7 +793,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/2udGjDmpK1dH9VGyw7nrei?si=31c282f609fc4df5"
+                  href="https://open.spotify.com/search/Cocaine%20Eric%20Clapton"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -803,7 +811,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/4j2bQkwIEO7QzAdjJ4txVm?si=d587cec49b2141ed"
+                  href="https://open.spotify.com/track/4j2bQkwIEO7QzAdjJ4txVm"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -821,7 +829,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/4z7maGZkAonDlXlwo8q69f?si=5578a6dc6dea4dbe"
+                  href="https://open.spotify.com/search/Da%20Ya%20Think%20I'm%20Sexy%20Rod%20Stewart"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -838,7 +846,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/4mLKx7zsUdyT4Ax7rI7KXu?si=d9130ada4f99499d"
+                  href="https://open.spotify.com/search/Tie%20Your%20Mother%20Down%20Queen"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -873,7 +881,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/5klVPqFJYBN1Fw1EWABPlf?si=adbaa1a8f0f643c2"
+                  href="https://open.spotify.com/search/Gilito%20de%20Barrio%20Norte%20María%20Elena%20Walsh"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -891,7 +899,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/7w9oefh3b0mNsN3GD0xLA3?si=5ce8f1bd8ca04eb4"
+                  href="https://open.spotify.com/search/Doña%20Fiaca%20Eladia%20Blázquez"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -909,7 +917,7 @@
             <div class="cancion-card">
               <div class="cancion-card-header">
                 <a
-                  href="https://open.spotify.com/intl-es/track/5IexGMIg4gYRPz5ExvcK9A?si=6200711a834a4461"
+                  href="https://open.spotify.com/search/El%20twist%20del%20mono%20liso%20María%20Elena%20Walsh"
                   target="_blank"
                   class="cancion-title-link"
                 >
@@ -929,7 +937,7 @@
       </section>
     </main>
 
-    <!-- Footer estilo UADER -->
+    <!-- Footer UADER -->
     <footer class="bg-dark text-white py-4 mt-5">
       <div class="container text-center">
         <p class="mb-1">
@@ -937,8 +945,9 @@
             href="https://fcytcdelu.uader.edu.ar"
             target="_blank"
             class="text-white text-decoration-none mx-2"
-            >UADER FCyT - Sede Concepción del Uruguay</a
           >
+            UADER FCyT - Sede Concepción del Uruguay
+          </a>
         </p>
         <p class="mb-0">
           <a
@@ -958,7 +967,7 @@
           </a>
           <span class="social-divider">|</span>
           <a
-            href="https://www.linkedin.com/in/fcyt-uader-sede-concepci%C3%B3n-del-uruguay-956909223"
+            href="https://www.linkedin.com/in/fcyt-uader-sede-concepción-del-uruguay-956909223"
             target="_blank"
             class="text-white text-decoration-none mx-2"
           >
@@ -978,7 +987,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Scroll Progress Bar
+      // Scroll Progress
       window.addEventListener("scroll", function () {
         const windowHeight = window.innerHeight;
         const documentHeight =
@@ -1002,7 +1011,7 @@
         });
       });
 
-      // Update active dot on scroll
+      // Update active dot
       window.addEventListener("scroll", function () {
         const scrollPosition = window.scrollY + window.innerHeight / 2;
 
@@ -1025,11 +1034,9 @@
       // Fade-in on scroll
       function checkVisibility() {
         const elements = document.querySelectorAll("section");
-
         elements.forEach((el) => {
           const rect = el.getBoundingClientRect();
           const windowHeight = window.innerHeight;
-
           if (rect.top < windowHeight * 0.8) {
             el.classList.add("visible");
           }
@@ -1039,14 +1046,13 @@
       window.addEventListener("load", checkVisibility);
       window.addEventListener("scroll", checkVisibility);
 
-      // Stagger animation for cards
+      // Stagger animation
       document.addEventListener("DOMContentLoaded", function () {
         const categorySections = document.querySelectorAll(".category-section");
         categorySections.forEach((section, index) => {
           section.style.transitionDelay = `${index * 0.1}s`;
         });
 
-        // Stagger animation for cards within each section
         const songsGrids = document.querySelectorAll(".songs-grid");
         songsGrids.forEach((grid) => {
           const cards = grid.querySelectorAll(".cancion-card");
@@ -1057,7 +1063,6 @@
           });
         });
 
-        // Animate cards when section becomes visible
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
