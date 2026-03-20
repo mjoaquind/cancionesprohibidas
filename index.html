@@ -22,6 +22,7 @@
         --accent: #003366;
         --accent-light: #004d99;
         --transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        --spotify-green: #1db954;
       }
 
       * {
@@ -189,7 +190,7 @@
         background: var(--bg-secondary);
       }
 
-      /* Imagen estilo hero - CORREGIDO PARA MÓVIL */
+      /* Imagen estilo hero */
       .category-image-wrapper {
         width: 100%;
         height: 85vh;
@@ -260,13 +261,39 @@
         border-color: var(--accent);
       }
 
-      .cancion-card h5 {
+      .cancion-card-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        flex-wrap: wrap;
+      }
+
+      .cancion-title-link {
+        color: var(--text-primary);
+        text-decoration: none;
         font-weight: 700;
         font-size: 1.25rem;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
         letter-spacing: -0.5px;
         line-height: 1.3;
+        transition: color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .cancion-title-link:hover {
+        color: var(--spotify-green);
+      }
+
+      .cancion-title-link i {
+        color: var(--spotify-green);
+        font-size: 1.1rem;
+        transition: transform 0.3s;
+      }
+
+      .cancion-title-link:hover i {
+        transform: scale(1.15);
       }
 
       .cancion-card .artista {
@@ -305,7 +332,7 @@
         margin: 0 0.25rem;
       }
 
-      /* Responsive - CORREGIDO */
+      /* Responsive */
       @media (max-width: 992px) {
         .category-image-wrapper {
           height: 60vh;
@@ -349,7 +376,6 @@
           font-size: 1.05rem;
         }
 
-        /* CORRECCIÓN: Imágenes más bajas en tablet/móvil para ver más horizontal */
         .category-image-wrapper {
           height: 45vh;
           min-height: 300px;
@@ -370,6 +396,12 @@
 
         .cancion-card {
           padding: 1.75rem;
+        }
+
+        .cancion-card-header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
         }
 
         .category-content {
@@ -403,7 +435,6 @@
           padding-bottom: 5rem;
         }
 
-        /* CORRECCIÓN: Imágenes aún más bajas en móvil pequeño */
         .category-image-wrapper {
           height: 40vh;
           min-height: 250px;
@@ -424,10 +455,13 @@
         .songs-grid {
           gap: 1.25rem;
         }
+
+        .cancion-title-link {
+          font-size: 1.1rem;
+        }
       }
 
       @media (max-width: 375px) {
-        /* CORRECCIÓN: Para móviles muy pequeños */
         .category-image-wrapper {
           height: 35vh;
           min-height: 220px;
@@ -528,8 +562,17 @@
         <div class="category-content">
           <div class="songs-grid">
             <div class="cancion-card">
-              <h5>"Viernes 3 AM"</h5>
-              <span class="artista">Charly García</span>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/41tcjjAImkOeFHEaGghqqI?si=43ba13dff6e44a6b"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Viernes 3 AM"</span>
+                </a>
+              </div>
+              <span class="artista">Seru Giran | Charly García</span>
               <p>
                 La canción aborda el suicidio de manera directa y con un tono
                 existencial oscuro. En el contexto de la dictadura, este tipo de
@@ -540,7 +583,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Me gusta ese tajo"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/5eK0UAeymUyyXILUAefcj5?si=e5c47b86470548e7"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Me gusta ese tajo"</span>
+                </a>
+              </div>
               <span class="artista">Pescado Rabioso</span>
               <p>
                 Fue censurada por su lenguaje explícito y referencias sexuales.
@@ -550,7 +602,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"La cultura es la sonrisa"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/0igatxQn7IXSsXoLUZj6Wj?si=9bea888b77244130"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"La cultura es la sonrisa"</span>
+                </a>
+              </div>
               <span class="artista">León Gieco</span>
               <p>
                 Aunque no es abiertamente política, su mensaje sobre la cultura
@@ -560,8 +621,17 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Ayer nomás"</h5>
-              <span class="artista">Los Gatos / Moris</span>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/20ILhYY5QbmsNc8KKBf8w5?si=d1169a1afec54079"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Ayer nomás"</span>
+                </a>
+              </div>
+              <span class="artista">Los Gatos | Moris</span>
               <p>
                 La letra expresa desencanto social y una mirada crítica sobre la
                 realidad. En un contexto de represión, cualquier alusión a la
@@ -570,7 +640,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Canción de amor para Francisca"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/7ynsa67gEii9YQIV8tpax0?si=ec87f29ad4724a74"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Canción de amor para Francisca"</span>
+                </a>
+              </div>
               <span class="artista">León Gieco</span>
               <p>
                 Interpretada como una metáfora sobre la pérdida, la ausencia y
@@ -580,7 +659,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Tema de los mosquitos"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/2Z91bDhwHETObUwgqrILwV?si=70da33d4f3df4086"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Tema de los mosquitos"</span>
+                </a>
+              </div>
               <span class="artista">León Gieco</span>
               <p>
                 Utiliza metáforas que podían leerse como críticas al poder o a
@@ -603,7 +691,16 @@
         <div class="category-content">
           <div class="songs-grid">
             <div class="cancion-card">
-              <h5>"Como la cigarra"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/3d9cyv4UtVqbWnVa9fqwiO?si=2fc2ed8228074c4e"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Como la cigarra"</span>
+                </a>
+              </div>
               <span class="artista">Mercedes Sosa (de María Elena Walsh)</span>
               <p>
                 Su letra habla de renacer después de la muerte ("tantas veces me
@@ -613,16 +710,52 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"La guerrillera" / "Estamos prisioneros" / "Carceleros"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/34a27fH0pzIAko2aRGSdz2?si=c8d7665a2ffc40ad"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"La guerrillera"</span>
+                </a>
+                |
+                <a
+                  href="https://open.spotify.com/intl-es/track/7oMm6nAJ5sVE7sb19S2Zph?si=f530765b684b4ed6"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Estamos prisioneros"</span>
+                </a>
+                |
+                <a
+                  href="https://open.spotify.com/search/Carceleros%20Horacio%20Guarany"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Carceleros"</span>
+                </a>
+              </div>
               <span class="artista">Horacio Guarany</span>
               <p>
-                Estas canciones contienen referencias directas a la represión,
-                la cárcel y la lucha política. Por su contenido explícito,
-                fueron consideradas peligrosas y directamente subversivas.
+                Esta canción contiene referencias directas a la represión, la
+                cárcel y la lucha política. Por su contenido explícito, fue
+                considerada peligrosa y directamente subversiva.
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Cambalache"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/3PI0FE7JUmEmEyN5YgKPZA?si=b89b5e3f54be483c"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Cambalache"</span>
+                </a>
+              </div>
               <span class="artista">Enrique Santos Discépolo</span>
               <p>
                 Aunque es anterior a la dictadura, su fuerte crítica a la
@@ -650,7 +783,16 @@
         <div class="category-content">
           <div class="songs-grid">
             <div class="cancion-card">
-              <h5>"Cocaine"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/2udGjDmpK1dH9VGyw7nrei?si=31c282f609fc4df5"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Cocaine"</span>
+                </a>
+              </div>
               <span class="artista">Eric Clapton</span>
               <p>
                 Fue censurada por considerarse una apología del consumo de
@@ -659,7 +801,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Another Brick in the Wall (Part 1)"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/4j2bQkwIEO7QzAdjJ4txVm?si=d587cec49b2141ed"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Another Brick in the Wall (Part 1)"</span>
+                </a>
+              </div>
               <span class="artista">Pink Floyd</span>
               <p>
                 Su crítica a las instituciones educativas y a la autoridad en
@@ -668,7 +819,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Da Ya Think I'm Sexy?"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/4z7maGZkAonDlXlwo8q69f?si=5578a6dc6dea4dbe"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Da Ya Think I'm Sexy?"</span>
+                </a>
+              </div>
               <span class="artista">Rod Stewart</span>
               <p>
                 Censurada por su contenido sexual explícito. La dictadura
@@ -676,7 +836,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Tie Your Mother Down"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/4mLKx7zsUdyT4Ax7rI7KXu?si=d9130ada4f99499d"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Tie Your Mother Down"</span>
+                </a>
+              </div>
               <span class="artista">Queen</span>
               <p>
                 Su lenguaje y actitud desafiante hacia figuras de autoridad
@@ -702,7 +871,16 @@
         <div class="category-content">
           <div class="songs-grid">
             <div class="cancion-card">
-              <h5>"Gilito de Barrio Norte"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/5klVPqFJYBN1Fw1EWABPlf?si=adbaa1a8f0f643c2"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Gilito de Barrio Norte"</span>
+                </a>
+              </div>
               <span class="artista">María Elena Walsh</span>
               <p>
                 Aunque parece humorística, contiene una crítica social sutil.
@@ -711,7 +889,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"Doña Fiaca"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/7w9oefh3b0mNsN3GD0xLA3?si=5ce8f1bd8ca04eb4"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"Doña Fiaca"</span>
+                </a>
+              </div>
               <span class="artista">Eladia Blázquez</span>
               <p>
                 La historia de una mujer que se niega a cumplir con las
@@ -720,7 +907,16 @@
               </p>
             </div>
             <div class="cancion-card">
-              <h5>"El twist del mono liso"</h5>
+              <div class="cancion-card-header">
+                <a
+                  href="https://open.spotify.com/intl-es/track/5IexGMIg4gYRPz5ExvcK9A?si=6200711a834a4461"
+                  target="_blank"
+                  class="cancion-title-link"
+                >
+                  <i class="bi bi-spotify"></i>
+                  <span>"El twist del mono liso"</span>
+                </a>
+              </div>
               <span class="artista">María Elena Walsh</span>
               <p>
                 Aunque es una canción infantil, formaba parte del repertorio de
